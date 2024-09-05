@@ -9,6 +9,8 @@ import AppLayout from "./components/Layout/AppLayout";
 import HomePage from "./components/pages/HomePage";
 import LoginPage from "./components/pages/LoginPage";
 import signupPage from "./components/pages/SignupPage";
+import PrivateLayout from "./components/Layout/PrivateLayout";
+import DashboardPage from "./components/pages/DashboardPage";
 
 const networkInterface = createNetworkInterface({
   uri: "/graphql",
@@ -28,6 +30,9 @@ const Root = () => {
           <IndexRoute component={HomePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={signupPage} />
+          <Route path="" component={PrivateLayout}>
+            <Route path="/dashboard" component={DashboardPage} />
+          </Route>
         </Route>
       </Router>
     </ApolloProvider>
