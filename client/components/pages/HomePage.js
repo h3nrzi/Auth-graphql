@@ -1,7 +1,21 @@
 import React from "react";
+import { graphql } from "react-apollo";
+import { user } from "../../api/queries";
+import { hashHistory } from "react-router";
 
-const HomePage = () => {
-  return <div>HomePage</div>;
-};
+class HomePage extends React.Component {
+  componentDidMount() {
+    if (this.props.data.user) return hashHistory.push("/dashboard");
+  }
 
-export default HomePage;
+  render() {
+    return (
+      <div>
+        <h3>Home</h3>
+        <p>👋🏻 Welcome!</p>
+      </div>
+    );
+  }
+}
+
+export default graphql(user)(HomePage);
